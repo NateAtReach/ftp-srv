@@ -1,6 +1,7 @@
 module.exports = {
   directive: 'USER',
   handler: function ({log, command} = {}) {
+    if (!this.secure && !this.server.options.allow_insecure_auth) return this.reply(534, 'Encryption required for authentication');
     if (this.username) return this.reply(530, 'Username already set');
     if (this.authenticated) return this.reply(230);
 

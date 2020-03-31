@@ -24,7 +24,8 @@ class FtpServer extends EventEmitter {
       whitelist: [],
       greeting: null,
       tls: false,
-      timeout: 0
+      timeout: 0,
+      allow_insecure_auth: false
     }, options);
 
     this._greeting = this.setupGreeting(this.options.greeting);
