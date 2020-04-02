@@ -59,8 +59,10 @@ module.exports = {
           log.trace({ connectionId: this.id, length: data.length }, "socket.on('data')");
 
           if (this.connector.socket) {
+            log.trace({ connectionId: this.id, length: data.length }, "pausing connector socket before filesystem write");
             this.connector.socket.pause();
           }
+
           if (stream && stream.writable) {
             log.trace({ connectionId: this.id, length: data.length }, "writing data to filesystem stream");
 
